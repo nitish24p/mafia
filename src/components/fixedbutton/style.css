@@ -1,0 +1,28 @@
+.fixedbutton {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  height: 59px;
+  background: #3476fd;
+  left: 0px;
+  right: 0px;
+  font-size: 22px;
+  color: #fff;
+  /* box-shadow: -1px -8px 8px 0px rgba(0,0,0,.05), 0 1px 0px 9px rgba(0,0,0,.1); */
+  text-transform: uppercase;
+}
+
+.fixedbutton:visited {
+  outline: none;
+}
+
+.fixedbutton:active {
+  background:#2858b9;
+  outline: none;
+  border: none
+}
+
+.fixedbutton:disabled {
+  background: #94b6fb;
+}
+
