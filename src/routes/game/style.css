@@ -1,0 +1,30 @@
+.game {
+  padding: 60px 10px;
+  min-height: 100%;
+  width: 100%;
+}
+
+.game .circle {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+
+
+/*
+progressBar
+*/
+.progressBar {
+  width: 0px;
+  height: 6px;
+  transition: width 2s;
+  background: #3576fd;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.showProgress {
+  width: 100%
+}
