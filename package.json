@@ -11,7 +11,8 @@
     "serve": "preact build && preact serve",
     "dev": "preact watch",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "yarn run build && cp build/index.html build/200.html && surge ./build -d https://mafia.surge.sh"
   },
   "eslintConfig": {
     "extends": "eslint-config-synacor",

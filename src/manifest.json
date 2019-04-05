@@ -1,6 +1,6 @@
 {
-  "name": "mafia",
-  "short_name": "mafia",
+  "name": "Mafia",
+  "short_name": "Mafia",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
