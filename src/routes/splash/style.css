@@ -1,0 +1,35 @@
+.splash {
+  display: flex;
+	min-height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: #fff
+}
+
+.outerWrapper {
+  text-align: center
+}
+
+.image {
+  width: 150px;
+}
+
+.btnGrp {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column
+}
+
+.primBtn {
+  padding: 15px 45px;
+  border-radius: 4px;
+}
+
+.secBtn {
+  padding: 15px 45px;
+  border-radius: 4px;
+  margin-top:10px;
+  border: 1px solid #3476fd !important;
+}
+

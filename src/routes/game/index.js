@@ -7,6 +7,7 @@ import Content from './../../components/content';
 import FixedButton from './../../components/fixedbutton';
 import ButtonGroup from './../../components/buttongroup';
 import IoAndroidArrowBack from 'preact-icons/io/android-arrow-back.js';
+import Header from './../../components/header';
 
 function ProgressBar(props) {
   return <div class={`${style.progressBar} ${props.enable ? style.showProgress : ''}`} />;
@@ -129,7 +130,7 @@ export default class Game extends Component {
   }
 
   goBack = () => {
-    this.navigateTo('/');
+    this.navigateTo('/home');
   }
 
   getTotalCount = () => {
@@ -142,37 +143,41 @@ export default class Game extends Component {
     const { isTouched, selectedRole, showProgress, isRoundOver } = this.state;
     const totalRolesLeft = this.getTotalCount();
     return (
-      <div class={style.game}>
-        <IoAndroidArrowBack class={style.backicon} onClick={this.goBack} />
-        <Card>
-          <div class={style.cardGroup}>
-            <Content>Roles left to assign</Content>
-            <Content>{totalRolesLeft}</Content>
+      <div>
+        <Header />
+        <div class={style.game}>
+          <IoAndroidArrowBack class={style.backicon} onClick={this.goBack} />
+          <Card>
+            <div class={style.cardGroup}>
+              <Content>Roles left to assign</Content>
+              <Content>{totalRolesLeft}</Content>
+            </div>
+          </Card>
+
+          <div class={style.cardContainer}>
+            <span class={style.cardLabel}>{!selectedRole ? 'Long Press to get your role' : ''}</span>
+            <LongPress
+              onTouchStart={this.onTouchStart}
+              onTouchMove={this.onTouchMove}
+              onTouchEnd={this.onTouchEnd} time={1000}
+              onLongPress={this.assignRole}>
+              <Card cardStyle={style.revealCard}>
+                {showProgress && <ProgressBar enable={isTouched} />}
+                <Content>{selectedRole || ''}</Content>
+              </Card>
+            </LongPress>
+
           </div>
-        </Card>
 
-        <div class={style.cardContainer}>
-          <span class={style.cardLabel}>{!selectedRole ? 'Long Press to get your role' : ''}</span>
-          <LongPress
-            onTouchStart={this.onTouchStart}
-            onTouchMove={this.onTouchMove}
-            onTouchEnd={this.onTouchEnd} time={1000}
-            onLongPress={this.assignRole}>
-            <Card cardStyle={style.revealCard}>
-              {showProgress && <ProgressBar enable={isTouched} />}
-              <Content>{selectedRole || ''}</Content>
-            </Card>
-          </LongPress>
+          <ButtonGroup>
 
+            <FixedButton secondary onClick={this.resetGame}>RESET</FixedButton>
+            <FixedButton onClick={this.restartRound}
+              disabled={showProgress || isRoundOver}>{isRoundOver ? 'START PLAYING' : 'NEXT PERSON'}</FixedButton>
+          </ButtonGroup>
         </div>
-
-        <ButtonGroup>
-
-          <FixedButton secondary onClick={this.resetGame}>RESET</FixedButton>
-          <FixedButton onClick={this.restartRound}
-            disabled={showProgress || isRoundOver}>{isRoundOver ? 'START PLAYING' : 'NEXT PERSON'}</FixedButton>
-        </ButtonGroup>
       </div>
+
     );
   }
 }

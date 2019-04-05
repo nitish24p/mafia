@@ -3,10 +3,12 @@ import style from './style';
 import { route } from 'preact-router';
 import Card from './../../components/card';
 import Counter from './../../components/counter';
-
+import IoAndroidArrowBack from 'preact-icons/io/android-arrow-back.js';
 import Content from './../../components/content';
 import FixedButton from './../../components/fixedbutton';
 import ButtonGroup from './../../components/buttongroup';
+
+import Header from './../../components/header';
 
 class Home extends Component {
   constructor(props) {
@@ -23,6 +25,9 @@ class Home extends Component {
   navigateTo = (path) => {
     route(path);
   };
+  goBack = () => {
+    route('/')
+  }
   getTotalCount = () => {
     const totalCount = Object.keys(this.state)
       .reduce((accum, curr) => {
@@ -67,50 +72,55 @@ class Home extends Component {
 
     const totalCount = this.getTotalCount();
     return (
-      <div class={style.home}>
-        <Card>
-          <div class={style.cardGroup}>
-            <Content>
-              Villagers
-            </Content>
-            <Counter onChange={this.onChangeCounter} count={VILLAGER} value={'VILLAGER'} />
-          </div>
-        </Card>
+      <div>
+        <Header />
+        <div class={style.home}>
+          <IoAndroidArrowBack class={style.backicon} onClick={this.goBack} />
+          <Card>
+            <div class={style.cardGroup}>
+              <Content>
+                Villagers
+              </Content>
+              <Counter onChange={this.onChangeCounter} count={VILLAGER} value={'VILLAGER'} />
+            </div>
+          </Card>
 
-        <Card>
-          <div class={style.cardGroup}>
-            <Content>
-              Mafia
-            </Content>
-            <Counter onChange={this.onChangeCounter} count={MAFIA} value={'MAFIA'} />
-          </div>
-        </Card>
+          <Card>
+            <div class={style.cardGroup}>
+              <Content>
+                Mafia
+              </Content>
+              <Counter onChange={this.onChangeCounter} count={MAFIA} value={'MAFIA'} />
+            </div>
+          </Card>
 
-        <Card>
-          <div class={style.cardGroup}>
-            <Content>
-              Doctor
-            </Content>
-            <Counter onChange={this.onChangeCounter} count={DOCTOR} value={'DOCTOR'} />
-          </div>
-        </Card>
+          <Card>
+            <div class={style.cardGroup}>
+              <Content>
+                Doctor
+              </Content>
+              <Counter onChange={this.onChangeCounter} count={DOCTOR} value={'DOCTOR'} />
+            </div>
+          </Card>
 
-        <Card>
-          <div class={style.cardGroup}>
-            <Content>
-              Detective
-            </Content>
-            <Counter onChange={this.onChangeCounter} count={DETECTIVE} value={'DETECTIVE'} />
-          </div>
-        </Card>
-        <ButtonGroup>
+          <Card>
+            <div class={style.cardGroup}>
+              <Content>
+                Detective
+              </Content>
+              <Counter onChange={this.onChangeCounter} count={DETECTIVE} value={'DETECTIVE'} />
+            </div>
+          </Card>
+          <ButtonGroup>
 
-          <FixedButton onClick={this.resetCounters} secondary>RESET</FixedButton>
-          <FixedButton onClick={this.onStartClick} disabled={!totalCount}>START</FixedButton>
-        </ButtonGroup>
+            <FixedButton onClick={this.resetCounters} secondary>RESET</FixedButton>
+            <FixedButton onClick={this.onStartClick} disabled={!totalCount}>START</FixedButton>
+          </ButtonGroup>
 
 
+        </div>
       </div>
+
     );
   }
 }

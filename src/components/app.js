@@ -5,8 +5,8 @@ import Header from './header';
 
 // Code-splitting is automated for routes
 import Home from '../routes/home';
-import Profile from '../routes/profile';
 import Game from './../routes/game';
+import Splash from './../routes/splash';
 
 export default class App extends Component {
 
@@ -21,12 +21,11 @@ export default class App extends Component {
   render() {
     return (
       <div id="app">
-        <Header />
+        {/* <Header /> */}
         <Router onChange={this.handleRoute}>
-          <Home path="/" />
+          <Splash path="/" />
+          <Home path="/home" />
           <Game path="/game" />
-          <Profile path="/profile/" user="me" />
-          <Profile path="/profile/:user" />
         </Router>
       </div>
     );

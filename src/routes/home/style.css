@@ -23,3 +23,8 @@
 .buttonGroup button {
   flex: 1
 }
+.backicon {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+}
