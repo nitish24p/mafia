@@ -9,3 +9,17 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.buttonGroup {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  height: 59px;
+  left: 0px;
+  right: 0px;
+  display: flex;
+}
+
+.buttonGroup button {
+  flex: 1
+}

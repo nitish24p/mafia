@@ -1,11 +1,9 @@
 import { h } from 'preact';
-import { Link } from 'preact-router/match';
 import style from './style';
 
-const Card = ({ children, ...rest }) => {
-  console.log(rest);
+const Card = ({ children, cardStyle, ...rest }) => {
   return (
-    <div class={`${style.card}`} {...rest}>
+    <div class={`${style.card} ${cardStyle || ''}`} {...rest}>
       {children}
     </div>
   );
